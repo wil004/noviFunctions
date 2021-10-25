@@ -28,6 +28,17 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
 
+const cumLaude = (array) => {
+	let cumLaudeGrades = 0;
+	for (let i = 0; i < array.length; i++) {
+		if (array[i] >= 8) {
+			cumLaudeGrades = cumLaudeGrades + 1;
+		}
+	}
+	return cumLaudeGrades
+}
+
+console.log(cumLaude(grades));
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -48,6 +59,8 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
 
+
+
 // ---- Verwachte uitkomsten:
 // averageGrade(grades) geeft 6.642857142857143
 // averageGrade([6, 4, 5]) geeft xxxx
@@ -58,7 +71,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
+const averageGrades = (array) => {
+	let sumOfGrades = 0;
+	for (let i = 0; i < array.length; i++) {
+		sumOfGrades = array[i] + sumOfGrades;
+	}
+	let average = sumOfGrades / array.length;
+	return average.toFixed(2)
+}
 
+console.log(averageGrades(grades));
 
 
 /* Bonusopdracht: hoogste cijfer */
@@ -82,3 +104,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+
+const highestGrade = (array) => {
+	let highest = 0;
+	for (let i = 0; i < array.length; i++) {
+		if (array[i] > highest) {
+			highest = array[i]
+		}
+	}
+	return highest
+}
+
+console.log(highestGrade(grades));
