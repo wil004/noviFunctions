@@ -9,7 +9,31 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+const getEmailDomain = (email) => {
+	let indexOfAt = 0;
+	let domain = '';
+	for (let i = 0; i < email.length; i++) {
+		if (email[i] === '@') {
+			indexOfAt = i;
+		}
+	}
+	for (let i = 0; i < email.length; i++) {
+		if (i > indexOfAt) {
+			domain = domain + email[i];
+		}
+	}
+	return domain
+}
 
+console.log(getEmailDomain('William@hotmail.com'))
+
+
+const getEmailDomainSplit = (email) => {
+	let splittedEmail = email.split('@');
+	return splittedEmail[1]
+}
+
+console.log(getEmailDomainSplit('William@split.com'))
 
 
 /* Opdracht  2 */
@@ -20,6 +44,35 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+
+const typeOfEmail = (email) => {
+	let indexOfAt = 0;
+	let domain = '';
+	for (let i = 0; i < email.length; i++) {
+		if (email[i] === '@') {
+			indexOfAt = i;
+		}
+	}
+	for (let i = 0; i < email.length; i++) {
+		// het @ wordt meegenomen in de domain variabele
+		if (i >= indexOfAt) {
+			domain = domain + email[i];
+		}
+	}
+	// doordat de @ wordt meegenomen onstaat er later geen verwarring door een valse uitkomst.
+	if (domain === '@novi-education.nl') {
+		return 'student'
+	}
+	else if (domain === '@novi.nl') {
+		return 'medewerker'
+	}
+	else {
+		return 'extern'
+	}
+}
+ 
+/* doordat de @ wordt meegenomen in de if statement en de domain variabele in de typeOfEmail functie, ontstaat er geen vals antwoord bij een emailadres als novi.nl@novi-education.nl */
+console.log(typeOfEmail('novi.nl@novi-education.nl')) 
 
 
 /* Opdracht  3 */
@@ -34,3 +87,14 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+const checkEmailValidity = (email) => {
+		if (email.charAt(email.length - 1) !== '.' && email.includes('@') && email.includes(',') === false && email.includes('.')) {
+			return true 
+			}
+			else {
+				return false 
+				}
+				}
+				
+			console.log(checkEmailValidity('n.eeken@novi.nl'));
